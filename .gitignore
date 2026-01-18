@@ -1,0 +1,57 @@
+# LaTeX auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+# LaTeX intermediate files
+*.dvi
+*.xdv
+*-converted-to.*
+
+# Bibliography files
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
+# Build tool auxiliary files
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+# Glossaries
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.lzo
+*.lzs
+
+# Index files
+*.idx
+*.ilg
+*.ind
+
+# Nix build results
+result
+result-*
+
+# OS files
+.DS_Store
+Thumbs.db
