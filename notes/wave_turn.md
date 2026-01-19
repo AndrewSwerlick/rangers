@@ -5,21 +5,28 @@ Each wave turn consists of **advancing tokens** along the road network toward th
 
 ---
 
-## Wave Turn Flow
+## Wave Turn Moves
 
-### 1. Advance
+### Advance
 **GM moves 1 or more tokens along roads**
 - Tokens move on road network (not trails - trails are ranger-only)
 - Movement continues until tokens hit obstacles or locations
 - GM decides which tokens move and where (enables splitting/concentrating forces naturally)
 - No movement speed mechanics - just positioning
+- All tokens must advance at once, and no other actions, or obstacle resolutions can take place until after all tokens have advanced
 
-### 2. Overcome
-**GM uses capability to deal with obstacles/locations encountered**
-- Capabilities determine HOW the wave deals with what it hits
-- Different archetypes have different capabilities
-- All capabilities involve either spending momentum, forcing rolls, or both
+### Assault 
+**If a wave token starts it's turn at a defended obstacle/location** 
+- GM may choose to assult the location, forcing ranger to roll to defend 
 
+### Take Cover
+**While advancing wave token hits an occupied obstacle or a trap, they're ambushed**
+- Damage mechanics resolve according to the obstacle type
+- Token can take no further actions this turn
+
+### Destroy/Secure
+**If the GM advances to an undefended obstacle or location, or starts at an undefended obstacle or location, they may opt to destroy it, or secure it**
+- Secure/Destroy takes 2 momentum
 ---
 
 ## Momentum (Dual Resource)
@@ -172,7 +179,7 @@ The wave breaks through the ranger's defense. The ranger is forced back.
 ## Complete Wave Turn Sequence
 
 1. **GM advances 1 or more tokens** along roads toward objective
-2. **Tokens encounter obstacles/locations** and stop
+2. **Tokens encounter obstacles/locations** and stop. They may opt to assault the obstacle/location and attempt to secure/overcome it
 5. **Rangers respond** (all ranger turns happen)
 6. **Repeat** until momentum pool reaches 0 or objective achieved
 
