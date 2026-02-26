@@ -83,6 +83,8 @@ As you allocate points, narrate:
 
 **Optional:** GM can award 1 bonus token for particularly powerful narration
 
+**Note:** Location recovery bonuses do not apply during Strengthen Resolve. By this point, most locations have fallen and rangers are operating outside the defensive structure of Acts 1-2.
+
 ---
 
 ## Act 3 Core Mechanics

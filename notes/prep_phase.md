@@ -143,10 +143,10 @@ Choke points are NOT prep purchases. They're natural terrain features that range
 - Adding tension or stakes to the threat
 - Surprising or emotionally resonant answers
 
-**Expected Budget:** 
+**Expected Budget:**
 For 4 players across 4 rounds:
-- Baseline: ~12-16 tokens (3-4 per player)
-- With bonuses: ~15-20 tokens
+- Baseline: ~8-12 tokens (2-3 per player)
+- With bonuses: ~12-16 tokens
 - Adjust wave starting momentum in playtesting to balance
 
 ### Spending Tokens (Round 4)
