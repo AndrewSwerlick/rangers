@@ -39,15 +39,17 @@ Players know this structure. The strategic tension in Act 1 is: invest in defens
 **Purpose:** Assign mechanical roles to actual map locations with narrative justification
 
 **Mechanics:**
-- Total locations available: ~2x number of players
-- Each player picks 2 locations from remaining pool (depleting resource creates adaptation)
+- Total locations = 1.5x number of players (rounded as needed)
+- GM assigns first, then players pick:
+  1. **GM assigns:** Half the player count (rounded up) from the location pool, placing them at existing structures on the map
+  2. **Players pick:** Each player chooses one location from the remaining pool and narrates where they're placing it and why
 - Location sheets have prompts players must answer:
   - "Why did you fortify the visitor center?"
   - "What's the story behind the old fire tower's radio equipment?"
 - Narrative explanation determines/justifies the location's mechanical role
 
 **Token Economy:**
-- 1 token per location designation (2 total per player baseline)
+- 1 token per location designation (1 per player baseline)
 - Bonus tokens for creative backstories
 - Bonus tokens for connecting locations to other rangers' stories
 

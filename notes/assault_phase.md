@@ -27,7 +27,7 @@ Once the wave momentum hits zero, we immediately enter the recovery phase. The G
 1. Recover 1 injury 
 2. Wipe away 1 exhaustion 
 3. Restore one trap or obstacle 
-4. Get one token
+4. Invoke a location recovery bonus
 
 Players are expected to narrate their choices, explain how they use the recovery period within the story.
 
