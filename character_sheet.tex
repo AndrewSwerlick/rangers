@@ -1,9 +1,51 @@
 \documentclass[letterpaper]{article}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.4in, landscape]{geometry}
 \usepackage{tikz}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{fontspec}
+\usepackage{xcolor}
+
+% ============================================================================
+% COLOR PALETTE (WPA-inspired)
+% ============================================================================
+\definecolor{parkbrown}{RGB}{89, 60, 31}
+\definecolor{parkgreen}{RGB}{45, 87, 44}
+\definecolor{mutedtext}{RGB}{100, 100, 100}
+\definecolor{rulelight}{RGB}{180, 180, 180}
+
+% ============================================================================
+% TYPOGRAPHY
+% Fonts discovered via fontconfig (configured in flake.nix shellHook)
+% Using LuaLaTeX for better variable font support
+% Variable fonts use FontFace to map bold/italic to same file with features
+% ============================================================================
+
+% Main body font: EB Garamond (variable font)
+% For \textbf{} to work, we need to explicitly set BoldFont
+\setmainfont{EB Garamond}[
+  BoldFont = {EB Garamond},
+  BoldFeatures = {RawFeature={wght=700}},
+  ItalicFont = {EB Garamond Italic}
+]
+
+% Sans font: Josefin Sans (variable font)
+\setsansfont{Josefin Sans}[
+  BoldFont = {Josefin Sans},
+  BoldFeatures = {RawFeature={wght=700}}
+]
+
+% Header font: Josefin Sans Bold, letterspaced
+\newfontfamily\headerfont{Josefin Sans}[
+  RawFeature = {wght=700},
+  LetterSpace = 5
+]
+
+% Section header font: Josefin Sans Bold
+\newfontfamily\sectionfont{Josefin Sans}[
+  RawFeature = {wght=700}
+]
+
+% Prompt font: Caveat for handwritten feel
+\newfontfamily\promptfont{Caveat}
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
@@ -11,68 +53,256 @@
 \begin{document}
 
 \noindent
-\begin{tikzpicture}[x=1in, y=-1in]
+\begin{tikzpicture}[x=1in, y=-1in, remember picture]
 
-  %%-- OUTER BORDER --%%
-  \draw[line width=2pt] (0,0) rectangle (7.5,10);
+  % ============================================================================
+  % DIMENSIONS
+  % ============================================================================
+  % Page: 11" x 8.5" (landscape letter), margins 0.4" each side
+  % Usable area: 10.2" x 7.7"
+  % We'll use 10" x 7.5" content area for clean math
 
-  %%-- LEFT COLUMN / RIGHT SECTION DIVIDER (x = 2.5") --%%
-  \draw[line width=2pt] (2.5,0) -- (2.5,10);
+  \def\pagewidth{10}
+  \def\pageheight{7.5}
+  \def\leftcolwidth{2.5}
+  \def\headerheight{0.7}
 
-  %%-- LEFT COLUMN HORIZONTAL DIVIDERS --%%
-  \draw (0,5)   -- (2.5,5);    % bottom of ART box     (y = 5")
-  \draw (0,7.5) -- (2.5,7.5);  % HARM / EXHAUSTED divider (y = 7.5")
+  % ============================================================================
+  % WPA-STYLE DOUBLE BORDER
+  % ============================================================================
+  \draw[line width=2.5pt, parkbrown] (0,0) rectangle (\pagewidth,\pageheight);
+  \draw[line width=0.75pt, parkbrown] (0.08,0.08) rectangle (\pagewidth-0.08,\pageheight-0.08);
 
-  %%-- ART BOX LABEL (centered in 2.5" wide x 5" tall box) --%%
-  \node[anchor=center] at (1.25,2.5) {%
-    \fontsize{32}{38}\selectfont\textbf{ART}%
+  % ============================================================================
+  % HEADER STRIP
+  % ============================================================================
+  \fill[parkbrown] (0.08,0.08) rectangle (\pagewidth-0.08,\headerheight);
+
+  % Title: THE RANGERS
+  \node[anchor=west, text=white] at (0.25,\headerheight/2) {%
+    {\headerfont\fontsize{26}{30}\selectfont THE RANGERS}%
   };
 
-  %%-- HARM ROW (y = 5" to 7.5") --%%
-  \node[anchor=west] at (0.15,5.7) {\large\textbf{HARM:}};
-  % Three circles centered horizontally in left column
-  \foreach \cx in {0.75, 1.25, 1.75} {
-    \draw[line width=1.5pt] (\cx,6.5) circle (0.18);
+  % Subtitle: FIELD SERVICE RECORD
+  \node[anchor=west, text=white] at (4.0,\headerheight/2) {%
+    {\sectionfont\fontsize{10}{12}\selectfont FIELD SERVICE RECORD}%
+  };
+
+  % PLACEHOLDER: Mountain silhouette graphic
+  % This box indicates where an SVG/PDF graphic should be placed
+  \draw[white, dashed, line width=0.5pt] (7.5,0.15) rectangle (9.85,\headerheight-0.07);
+  \node[anchor=center, text=white, font=\tiny] at (8.675,\headerheight/2) {%
+    [mountain silhouette]%
+  };
+
+  % ============================================================================
+  % LEFT COLUMN / RIGHT SECTION DIVIDER
+  % ============================================================================
+  \draw[line width=1.5pt, parkbrown] (\leftcolwidth,\headerheight) -- (\leftcolwidth,\pageheight);
+
+  % ============================================================================
+  % LEFT COLUMN: PORTRAIT BOX
+  % ============================================================================
+  \def\portraittop{\headerheight + 0.1}
+  \def\portraitbottom{2.9}
+
+  % Portrait frame (naturalist field guide style)
+  \draw[line width=1pt, parkbrown] (0.2,\portraittop) rectangle (\leftcolwidth-0.2,\portraitbottom);
+  \draw[line width=0.5pt, parkbrown] (0.25,\portraittop+0.05) rectangle (\leftcolwidth-0.25,\portraitbottom-0.05);
+
+  % Ranger Name line beneath portrait
+  \node[anchor=west, text=parkbrown] at (0.25,\portraitbottom+0.2) {%
+    {\sectionfont\fontsize{8}{10}\selectfont RANGER NAME}%
+  };
+  \draw[parkbrown, line width=0.5pt] (0.25,\portraitbottom+0.4) -- (\leftcolwidth-0.25,\portraitbottom+0.4);
+
+  % ============================================================================
+  % LEFT COLUMN: HARM SECTION
+  % ============================================================================
+  \def\harmtop{3.6}
+
+  % Section divider
+  \draw[parkbrown, line width=0.5pt] (0.1,\harmtop-0.1) -- (\leftcolwidth-0.1,\harmtop-0.1);
+
+  % HARM header
+  \node[anchor=west, text=parkbrown] at (0.15,\harmtop+0.15) {%
+    {\sectionfont\fontsize{11}{13}\selectfont HARM}%
+  };
+
+  % Three circles for HARM tracking - left aligned with title, smaller
+  \foreach \cx in {0.32, 0.67, 1.02} {
+    \draw[line width=1.5pt, parkbrown] (\cx,\harmtop+0.5) circle (0.11);
   }
 
-  %%-- EXHAUSTED ROW (y = 7.5" to 10") --%%
-  \node[anchor=west] at (0.15,8.2) {\large\textbf{EXHAUSTED:}};
-  % Three circles centered horizontally in left column
-  \foreach \cx in {0.75, 1.25, 1.75} {
-    \draw[line width=1.5pt] (\cx,9.0) circle (0.18);
+  % HARM EXPLAIN text
+  \node[anchor=north west, text width=2.1in, font=\fontsize{7}{9}\selectfont, text=mutedtext]
+    at (0.15,\harmtop+0.75) {%
+    \textbf{1 Harm:} Disadvantage on physical actions\\
+    \textbf{2 Harm:} Movement halved; can't sprint\\
+    \textbf{3 Harm:} Incapacitated — captured or dying%
+  };
+
+  % ============================================================================
+  % LEFT COLUMN: EXHAUSTION SECTION
+  % ============================================================================
+  \def\exhausttop{5.0}
+
+  % Section divider
+  \draw[parkbrown, line width=0.5pt] (0.1,\exhausttop-0.1) -- (\leftcolwidth-0.1,\exhausttop-0.1);
+
+  % EXHAUSTION header
+  \node[anchor=west, text=parkbrown] at (0.15,\exhausttop+0.15) {%
+    {\sectionfont\fontsize{11}{13}\selectfont EXHAUSTION}%
+  };
+
+  % Three circles for EXHAUSTION tracking - left aligned with title, smaller
+  \foreach \cx in {0.32, 0.67, 1.02} {
+    \draw[line width=1.5pt, parkbrown] (\cx,\exhausttop+0.5) circle (0.11);
   }
 
-  %%-- ACTIONS HEADER (spans full right section, y = 0" to 0.75") --%%
-  \node[anchor=center] at (5.0,0.38) {\Large\textbf{ACTIONS}};
-  \draw (2.5,0.75) -- (7.5,0.75);
+  % Exhaustion explanation
+  \node[anchor=north west, text width=2.1in, font=\fontsize{7}{9}\selectfont, text=mutedtext]
+    at (0.15,\exhausttop+0.75) {%
+    Roll unfilled circles (base 3d6).\\
+    Mark when you push, sprint, or overexert.%
+  };
 
-  %%-- RIGHT SECTION: THREE EQUAL SUB-COLUMNS (5" / 3 = 1.667" each) --%%
-  %% Sub-column dividers at x = 4.167" and x = 5.833"
-  \draw (4.167,0.75) -- (4.167,10);
-  \draw (5.833,0.75) -- (5.833,10);
+  % ============================================================================
+  % LEFT COLUMN: ROLLS REF
+  % ============================================================================
+  \def\rollstop{6.2}
 
-  %%-- SUB-COLUMN HEADERS (y = 0.75" to 1.35") --%%
-  \node[anchor=center] at (3.333,1.05) {\normalsize\textbf{PREP}};
-  \node[anchor=center] at (5.000,1.05) {\normalsize\textbf{DEFENSE}};
-  \node[anchor=center] at (6.667,1.05) {\small\textbf{DESPERATION}};
-  \draw (2.5,1.35) -- (7.5,1.35);
+  % Section divider
+  \draw[parkbrown, line width=0.5pt] (0.1,\rollstop-0.1) -- (\leftcolwidth-0.1,\rollstop-0.1);
 
-  %%-- RULED LINES IN ACTION COLUMNS --%%
-  %% 0.1" margin from sub-column borders on each side:
-  %%   PREP column:        x = 2.6  to 4.067
-  %%   DEFENSE column:     x = 4.267 to 5.733
-  %%   DESPERATION column: x = 5.933 to 7.4
-  %%
-  %% Lines at y = 2.5, 4.5, 6.5 (shared by all three columns)
-  %% 4th line at y = 8.5 for PREP and DEFENSE only (DESPERATION has 3 lines)
-  \foreach \y in {2.5, 4.5, 6.5} {
-    \draw (2.6,  \y) -- (4.067, \y);   %% PREP
-    \draw (4.267,\y) -- (5.733, \y);   %% DEFENSE
-    \draw (5.933,\y) -- (7.4,   \y);   %% DESPERATION
+  % ROLLS REF header
+  \node[anchor=west, text=parkbrown] at (0.15,\rollstop+0.15) {%
+    {\sectionfont\fontsize{11}{13}\selectfont ROLLS REF}%
+  };
+
+  % Dice reference
+  \node[anchor=north west, text width=2.1in, font=\fontsize{7}{9}\selectfont, text=mutedtext]
+    at (0.15,\rollstop+0.4) {%
+    \textbf{1–3:} Fail — take harm or complication\\
+    \textbf{4–5:} Mixed — success with cost\\
+    \textbf{6:} Clean success\\[3pt]
+    \textit{Safe actions} succeed automatically.\\
+    \textit{Risky actions} require a roll.%
+  };
+
+  % ============================================================================
+  % RIGHT SECTION: ACTIONS HEADER
+  % ============================================================================
+  \def\actionstop{\headerheight}
+  \def\actionsheader{\headerheight + 0.45}
+
+  % ACTIONS header bar
+  \fill[parkbrown!15] (\leftcolwidth,\actionstop) rectangle (\pagewidth-0.08,\actionsheader);
+  \node[anchor=center, text=parkbrown] at ({(\leftcolwidth+\pagewidth)/2},{\actionstop+0.225}) {%
+    {\headerfont\fontsize{14}{16}\selectfont A C T I O N S}%
+  };
+
+  % Divider below ACTIONS header
+  \draw[parkbrown, line width=1pt] (\leftcolwidth,\actionsheader) -- (\pagewidth-0.08,\actionsheader);
+
+  % ============================================================================
+  % RIGHT SECTION: THREE ACTION COLUMNS
+  % ============================================================================
+  \def\colheadertop{\actionsheader}
+  \def\colheaderbottom{\actionsheader + 0.35}
+  \def\actionbottom{4.5}
+
+  % Column boundaries
+  \def\colonestart{\leftcolwidth}
+  \def\colonemid{5.0}
+  \def\coltwomid{7.5}
+  \def\colend{\pagewidth-0.08}
+
+  % Column dividers
+  \draw[parkbrown, line width=0.75pt] (\colonemid,\colheadertop) -- (\colonemid,\actionbottom);
+  \draw[parkbrown, line width=0.75pt] (\coltwomid,\colheadertop) -- (\coltwomid,\actionbottom);
+
+  % Column headers
+  \node[anchor=center, text=parkbrown] at ({(\colonestart+\colonemid)/2},{\colheadertop+0.175}) {%
+    {\sectionfont\fontsize{10}{12}\selectfont PREP}%
+  };
+  \node[anchor=center, text=parkbrown] at ({(\colonemid+\coltwomid)/2},{\colheadertop+0.175}) {%
+    {\sectionfont\fontsize{10}{12}\selectfont DEFENSE}%
+  };
+  \node[anchor=center, text=parkbrown] at ({(\coltwomid+\colend)/2},{\colheadertop+0.175}) {%
+    {\sectionfont\fontsize{10}{12}\selectfont DESPERATION}%
+  };
+
+  % Header divider
+  \draw[parkbrown, line width=0.5pt] (\leftcolwidth,\colheaderbottom) -- (\pagewidth-0.08,\colheaderbottom);
+
+  % Ruled lines in action columns
+  \foreach \y in {1.9, 2.5, 3.1, 3.7} {
+    \draw[rulelight, line width=0.4pt] (\colonestart+0.1,\y) -- (\colonemid-0.1,\y);
+    \draw[rulelight, line width=0.4pt] (\colonemid+0.1,\y) -- (\coltwomid-0.1,\y);
+    \draw[rulelight, line width=0.4pt] (\coltwomid+0.1,\y) -- (\colend-0.1,\y);
   }
-  %% 4th line for PREP and DEFENSE
-  \draw (2.6,  8.5) -- (4.067, 8.5);  %% PREP
-  \draw (4.267,8.5) -- (5.733, 8.5);  %% DEFENSE
+  % Extra line for PREP and DEFENSE (DESPERATION has fewer lines per design)
+  \draw[rulelight, line width=0.4pt] (\colonestart+0.1,4.3) -- (\colonemid-0.1,4.3);
+  \draw[rulelight, line width=0.4pt] (\colonemid+0.1,4.3) -- (\coltwomid-0.1,4.3);
+
+  % ============================================================================
+  % BOTTOM DIVIDER (Actions / Archetype+Character)
+  % ============================================================================
+  \draw[parkbrown, line width=1pt] (\leftcolwidth,\actionbottom) -- (\pagewidth-0.08,\actionbottom);
+
+  % ============================================================================
+  % ARCHETYPE SECTION
+  % ============================================================================
+  \def\archetypetop{\actionbottom}
+  \def\archetyperight{6.8}
+
+  % Vertical divider between ARCHETYPE and CHARACTER
+  \draw[parkbrown, line width=0.75pt] (\archetyperight,\archetypetop) -- (\archetyperight,\pageheight-0.08);
+
+  % ARCHETYPE header
+  \node[anchor=west, text=parkbrown] at (\leftcolwidth+0.15,\archetypetop+0.25) {%
+    {\sectionfont\fontsize{11}{13}\selectfont ARCHETYPE}%
+  };
+
+  % Archetype name line
+  \draw[parkbrown, line width=0.5pt] (\leftcolwidth+0.15,\archetypetop+0.5) -- (\archetyperight-0.15,\archetypetop+0.5);
+
+  % Archetype ability labels and lines
+  \node[anchor=west, text=mutedtext, font=\fontsize{8}{10}\selectfont]
+    at (\leftcolwidth+0.15,\archetypetop+0.75) {Prep bonus:};
+  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+1.0) -- (\archetyperight-0.15,\archetypetop+1.0);
+  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+1.35) -- (\archetyperight-0.15,\archetypetop+1.35);
+
+  \node[anchor=west, text=mutedtext, font=\fontsize{8}{10}\selectfont]
+    at (\leftcolwidth+0.15,\archetypetop+1.6) {Defense ability:};
+  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+1.85) -- (\archetyperight-0.15,\archetypetop+1.85);
+  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+2.2) -- (\archetyperight-0.15,\archetypetop+2.2);
+
+  \node[anchor=west, text=mutedtext, font=\fontsize{8}{10}\selectfont]
+    at (\leftcolwidth+0.15,\archetypetop+2.45) {Desperation move:};
+  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+2.7) -- (\archetyperight-0.15,\archetypetop+2.7);
+
+  % ============================================================================
+  % CHARACTER SECTION
+  % ============================================================================
+  \def\charactertop{\actionbottom}
+
+  % CHARACTER header
+  \node[anchor=west, text=parkbrown] at (\archetyperight+0.15,\charactertop+0.25) {%
+    {\sectionfont\fontsize{11}{13}\selectfont CHARACTER}%
+  };
+
+  % Prompt in Caveat font
+  \node[anchor=west, text=mutedtext, font=\fontsize{11}{13}\selectfont]
+    at (\archetyperight+0.15,\charactertop+0.55) {%
+    {\promptfont What were you running from?}%
+  };
+
+  % Character section ruled lines for writing
+  \foreach \y in {0.85, 1.2, 1.55, 1.9, 2.25, 2.6, 2.85} {
+    \draw[rulelight, line width=0.4pt] (\archetyperight+0.15,\charactertop+\y) -- (\pagewidth-0.2,\charactertop+\y);
+  }
 
 \end{tikzpicture}
 
