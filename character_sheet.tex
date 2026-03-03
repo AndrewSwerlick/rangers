@@ -39,7 +39,9 @@
   FakeBold = 1.5
 ]
 
-\newfontfamily\promptfont{Caveat}
+\newfontfamily\promptfont{Caveat}[
+  Renderer=HarfBuzz
+]
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
@@ -184,9 +186,6 @@
 
   % Archetype name line (blank for player to fill in)
 
-  % Flavor text line (blank for player to fill in)
-  \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\archetypetop+0.65) -- (\pagewidth-0.25,\archetypetop+0.65);
-
   % Divider below archetype
   \draw[parkbrown, line width=1pt] (\leftcolwidth,\archetypebottom) -- (\pagewidth-0.08,\archetypebottom);
 
@@ -242,27 +241,42 @@
   \draw[parkbrown, line width=1pt] (\leftcolwidth,\actionsbottom) -- (\pagewidth-0.08,\actionsbottom);
 
   % ============================================================================
-  % RIGHT SECTION: CHARACTER (full width, expanded)
+  % RIGHT SECTION: CHARACTER (split: 25% prompts, 75% writing)
   % ============================================================================
   \def\charactertop{\actionsbottom}
+  \def\characterdivider{5.0}  % 33% of right section width from left edge
 
   % CHARACTER header
   \node[anchor=west, text=parkbrown] at (\leftcolwidth+0.15,\charactertop+0.25) {%
     {\sectionfont\fontsize{11}{13}\selectfont CHARACTER}%
   };
 
-  % Ruled lines for writing
-  \foreach \y in {0.9, 1.25, 1.6, 1.95} {
-    \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\charactertop+\y) -- (\pagewidth-0.2,\charactertop+\y);
-  }
+  % Vertical divider between prompts and writing area
+  \draw[parkbrown, line width=0.5pt] (\characterdivider,\charactertop+0.4) -- (\characterdivider,\pageheight-0.15);
 
-  % Prompt in Caveat font
-  \node[anchor=west, text=mutedtext, font=\fontsize{12}{14}\selectfont]
-    at (\leftcolwidth+0.15,\charactertop+0.6) {%
-    {\promptfont What were you running from?}%
+  % Left side: Prompts header
+  \node[anchor=north west, text=parkbrown] at (\leftcolwidth+0.15,\charactertop+0.55) {%
+    {\sectionfont\fontsize{7}{8}\selectfont CHOOSE 2:}%
   };
-  
-  % Ranger name line (blank for player to fill in)
+
+  % Left side: Prompts list
+  \node[anchor=north west, text=mutedtext, inner sep=0pt]
+    at (\leftcolwidth+0.15,\charactertop+0.74) {%
+    \begin{minipage}{2.3in}
+    \raggedright\promptfont\fontsize{9}{12}\selectfont
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ What were you running from when you came to the park?\par\vspace{4pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ Why did you leave the park and come back?\par\vspace{4pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ What do you keep in your personal locker at the ranger station?\par\vspace{4pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ When you close your eyes at night, what memory keeps coming back unbidden?\par\vspace{4pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ You have one thing from before the invasion you carry on your person, what is it?\par\vspace{4pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ In the aftermath of everything you lost touch with someone important. Who was it, and why can't you stop thinking about them?
+    \end{minipage}%
+  };
+
+  % Right side: Writing lines
+  \foreach \y in {0.55, 0.85, 1.15, 1.45, 1.75, 2.05, 2.35, 2.65, 2.95, 3.25, 3.55} {
+    \draw[rulelight, line width=0.4pt] (\characterdivider+0.15,\charactertop+\y) -- (\pagewidth-0.2,\charactertop+\y);
+  }
 
 \end{tikzpicture}
 
@@ -389,9 +403,9 @@
   \node[anchor=north west, text width=\lefttext, font=\fontsize{9}{11}\selectfont]
     at (0.15,\breachtop+0.35) {%
     When wave assaults your position, roll d6:\\[3pt]
-    \textbf{1–3 REPELLED} — Wave takes damage, you're safe\\[2pt]
-    \textbf{4–5 CONTESTED} — Wave takes damage; choose: injury / exhaustion / retreat\\[2pt]
-    \textbf{6 BREAKTHROUGH} — Must retreat to adjacent location (if cannot → captured)%
+    \textbf{1–2 BREAKTHROUGH} — Must retreat to adjacent location (if cannot → captured)\\[2pt]
+    \textbf{3–5 CONTESTED} — Wave takes damage; choose: injury / exhaustion / retreat\\[2pt]
+    \textbf{6 REPELLED} — Wave takes damage, you're safe%
   };
 
   % ============================================================================
@@ -409,7 +423,7 @@
     {\sectionfont\fontsize{9}{11}\selectfont HEALTHY} — Full movement options\\[3pt]
     {\sectionfont\fontsize{9}{11}\selectfont 1 INJURY} — No bushwhacking (off-trail); trails and roads only\\[3pt]
     {\sectionfont\fontsize{9}{11}\selectfont 2 INJURIES} — Roads only, no trails; high capture risk\\[3pt]
-    {\sectionfont\fontsize{9}{11}\selectfont 3 INJURIES} — Cannot move; must hold or be captured; rolling 6 = auto-capture%
+    {\sectionfont\fontsize{9}{11}\selectfont 3 INJURIES} — Cannot move; must hold or be captured; 1–2 = capture, 3–5 = no retreat%
   };
 
   % ============================================================================

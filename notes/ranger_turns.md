@@ -46,11 +46,10 @@ Players can choose to take harm as injury or exhaustion
 
 **3rd Injury (Cannot Move):**
 - Cannot retreat at all
-- Rolling 6 = automatic capture
 - MUST hold or be captured
-- On 4-5, cannot choose "give up location" (can't leave)
-- Forced to choose injury (→ captured) or exhaustion
-
+- Defense rolls 
+  - On 1-2 capture
+  - On 3-5, cannot choose "retreat" must choose exhaustion 
 ---
 
 ## Movement Actions
