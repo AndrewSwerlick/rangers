@@ -22,11 +22,14 @@ Players know this structure. The strategic tension in Act 1 is: invest in defens
 
 **Mechanics:**
 - Players fill out character/archetype sheets
-- Sheets include choose-your-own prompts like:
+- Sheets include choose-your-own prompts, the same prompts for all archetypes. Each player circles and choooses 2 to answer 
+Prompts: 
   - "What were you running from when you came to the park?"
   - "Why did you leave the park and come back?"
   - "What do you keep in your personal locker at the ranger station?"
-- Prompts can be universal or archetype-specific
+  - "When you close your eyes at night, what memory keeps coming back unbidden?"
+  - "You have one thing from before the invasion you carry on your person, what is it?"
+  - "In the after math of everything you lost touch with someone important. Who was it, and can't you stop thinking about them?"
 
 **Token Economy:**
 - Baseline: 1 token per prompt answered
@@ -41,7 +44,7 @@ Players know this structure. The strategic tension in Act 1 is: invest in defens
 **Mechanics:**
 - Total locations = 1.5x number of players (rounded as needed)
 - GM assigns first, then players pick:
-  1. **GM assigns:** Half the player count (rounded up) from the location pool, placing them at existing structures on the map
+  1. **GM assigns:** Half the player count (rounded up) from the location pool, placing them at existing structures on the map (do this while players fill out the character sheet, or before session)
   2. **Players pick:** Each player chooses one location from the remaining pool and narrates where they're placing it and why
 - Location sheets have prompts players must answer:
   - "Why did you fortify the visitor center?"
