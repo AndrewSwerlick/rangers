@@ -251,19 +251,17 @@
     {\sectionfont\fontsize{11}{13}\selectfont CHARACTER}%
   };
 
+  % Ruled lines for writing
+  \foreach \y in {0.9, 1.25, 1.6, 1.95} {
+    \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\charactertop+\y) -- (\pagewidth-0.2,\charactertop+\y);
+  }
+
   % Prompt in Caveat font
   \node[anchor=west, text=mutedtext, font=\fontsize{12}{14}\selectfont]
     at (\leftcolwidth+0.15,\charactertop+0.6) {%
     {\promptfont What were you running from?}%
   };
-
-  % Ruled lines for writing
-  \foreach \y in {0.9, 1.25, 1.6, 1.95, 2.3, 2.65, 2.95} {
-    \draw[rulelight, line width=0.4pt] (\leftcolwidth+0.15,\charactertop+\y) -- (\pagewidth-0.2,\charactertop+\y);
-  }
-
-  % Character backstory area (blank ruled lines for player to fill in)
-
+  
   % Ranger name line (blank for player to fill in)
 
 \end{tikzpicture}
