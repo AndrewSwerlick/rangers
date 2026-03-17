@@ -1,0 +1,45 @@
+\documentclass[letterpaper]{article}
+\input{sheet_preamble}
+
+\begin{document}
+
+\newcommand{\archetypeField}{%
+  \node[anchor=west, text=parkbrown] at (\leftcolwidth+1.25,\archetypetop+0.28) {%
+    {\headerfont\fontsize{16}{18}\selectfont THE MEDIC}%
+  };%
+}
+
+\newcommand{\actionContent}{%
+  % PREP COLUMN: FREE TRIAGE
+  \node[anchor=north west, text width=2.3in, inner sep=0pt]
+    at (\colonestart+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont FREE TRIAGE}\\[4pt]
+    {\fontsize{9}{12}\selectfont Treat 1 harm on any ranger during the prep phase without spending tokens.}%
+  };
+
+  % DEFENSE COLUMN: FIELD DRESSING + HEROIC SAVE
+  \node[anchor=north west, text width=2.2in, inner sep=0pt]
+    at (\colonemid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont FIELD DRESSING}
+    {\fontsize{7}{9}\selectfont \textit{(safe)}}\\[3pt]
+    {\fontsize{9}{11}\selectfont After a successful defense, remove 1 harm from an adjacent ranger.}\\[3pt]
+    {\sectionfont\fontsize{9}{11}\selectfont HEROIC SAVE}
+    {\fontsize{7}{9}\selectfont \textit{(costly)}}\\[2pt]
+    {\fontsize{9}{11}\selectfont Pull an incapacitated ranger back to 1 harm; they may act next turn. Take 1 harm.}%
+  };
+
+  % DESPERATION COLUMN: SECOND WIND
+  \node[anchor=north west, text width=2.1in, inner sep=0pt]
+    at (\coltwomid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont SECOND WIND}\\[4pt]
+    {\fontsize{8}{10}\selectfont \textit{Spend 2 tokens:}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Clear all harm from one ranger immediately.}%
+  };%
+}
+
+\input{sheet_body}
+
+\end{document}

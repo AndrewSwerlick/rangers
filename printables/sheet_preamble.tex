@@ -1,0 +1,46 @@
+\usepackage[margin=0.4in, landscape]{geometry}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{xcolor}
+
+% ============================================================================
+% COLOR PALETTE (B&W printer friendly - maximum contrast)
+% ============================================================================
+\definecolor{parkbrown}{RGB}{0, 0, 0}         % Pure black for headers/borders
+\definecolor{parkgreen}{RGB}{0, 0, 0}         % Pure black
+\definecolor{mutedtext}{RGB}{0, 0, 0}         % Pure black for all text
+\definecolor{rulelight}{RGB}{100, 100, 100}   % Medium gray lines
+
+% ============================================================================
+% TYPOGRAPHY
+% ============================================================================
+\setmainfont{EB Garamond}[
+  BoldFont = {EB Garamond},
+  BoldFeatures = {RawFeature={wght=700}},
+  ItalicFont = {EB Garamond Italic},
+  BoldItalicFont = {EB Garamond Italic},
+  BoldItalicFeatures = {RawFeature={wght=700}}
+]
+
+\setsansfont{Josefin Sans}[
+  BoldFont = {Josefin Sans},
+  BoldFeatures = {RawFeature={wght=700}}
+]
+
+\newfontfamily\headerfont{Josefin Sans}[
+  RawFeature = {wght=700},
+  LetterSpace = 5,
+  FakeBold = 1.5
+]
+
+\newfontfamily\sectionfont{Josefin Sans}[
+  RawFeature = {wght=700},
+  FakeBold = 1.5
+]
+
+\newfontfamily\promptfont{Caveat}[
+  Renderer=HarfBuzz
+]
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}

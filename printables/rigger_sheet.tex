@@ -1,0 +1,45 @@
+\documentclass[letterpaper]{article}
+\input{sheet_preamble}
+
+\begin{document}
+
+\newcommand{\archetypeField}{%
+  \node[anchor=west, text=parkbrown] at (\leftcolwidth+1.25,\archetypetop+0.28) {%
+    {\headerfont\fontsize{16}{18}\selectfont THE RIGGER}%
+  };%
+}
+
+\newcommand{\actionContent}{%
+  % PREP COLUMN: FREE TRAP
+  \node[anchor=north west, text width=2.3in, inner sep=0pt]
+    at (\colonestart+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont FREE TRAP}\\[4pt]
+    {\fontsize{9}{12}\selectfont Place 1 trap during the prep phase without spending tokens.}%
+  };
+
+  % DEFENSE COLUMN: TARGETED DETONATION + CONTROLLED BURN
+  \node[anchor=north west, text width=2.2in, inner sep=0pt]
+    at (\colonemid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont TARGETED DETONATION}
+    {\fontsize{7}{9}\selectfont \textit{(safe)}}\\[3pt]
+    {\fontsize{9}{11}\selectfont If a wave triggers a trap adjacent to your location, add +1 damage.}\\[3pt]
+    {\sectionfont\fontsize{9}{11}\selectfont CONTROLLED BURN}
+    {\fontsize{7}{9}\selectfont \textit{(costly)}}\\[2pt]
+    {\fontsize{9}{11}\selectfont Block a road for 2 turns; deal 1 momentum damage per turn to nearby tokens. Take 1 harm.}%
+  };
+
+  % DESPERATION COLUMN: SCORCHED EARTH
+  \node[anchor=north west, text width=2.1in, inner sep=0pt]
+    at (\coltwomid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont SCORCHED EARTH}\\[4pt]
+    {\fontsize{8}{10}\selectfont \textit{Spend 2 tokens:}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Permanently destroy a road segment and deal 2 momentum damage to each adjacent token.}%
+  };%
+}
+
+\input{sheet_body}
+
+\end{document}

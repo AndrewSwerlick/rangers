@@ -1,0 +1,45 @@
+\documentclass[letterpaper]{article}
+\input{sheet_preamble}
+
+\begin{document}
+
+\newcommand{\archetypeField}{%
+  \node[anchor=west, text=parkbrown] at (\leftcolwidth+1.25,\archetypetop+0.28) {%
+    {\headerfont\fontsize{16}{18}\selectfont THE HUNTER}%
+  };%
+}
+
+\newcommand{\actionContent}{%
+  % PREP COLUMN: MARKSMAN TRAINING
+  \node[anchor=north west, text width=2.3in, inner sep=0pt]
+    at (\colonestart+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont MARKSMAN TRAINING}\\[4pt]
+    {\fontsize{9}{12}\selectfont Spend 1 prep token to give everyone advantage on any attack roll. Each ranger may only use this once.}%
+  };
+
+  % DEFENSE COLUMN: CLEAN SHOT + SUPPRESSING FIRE
+  \node[anchor=north west, text width=2.2in, inner sep=0pt]
+    at (\colonemid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont CLEAN SHOT}
+    {\fontsize{7}{9}\selectfont \textit{(safe)}}\\[3pt]
+    {\fontsize{9}{11}\selectfont When ambushing a wave token, deal 1 extra damage.}\\[3pt]
+    {\sectionfont\fontsize{9}{11}\selectfont SUPPRESSING FIRE}
+    {\fontsize{7}{9}\selectfont \textit{(costly)}}\\[2pt]
+    {\fontsize{9}{11}\selectfont Wave tokens cannot assault your position next turn or advance past you. Take 1 harm.}%
+  };
+
+  % DESPERATION COLUMN: BULLSEYE AT 600 YARDS
+  \node[anchor=north west, text width=2.1in, inner sep=0pt]
+    at (\coltwomid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont BULLSEYE AT 600 YARDS}\\[4pt]
+    {\fontsize{8}{10}\selectfont \textit{Spend 1 token:}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Deal 3 momentum damage to any token within 2 segments of your location.}%
+  };%
+}
+
+\input{sheet_body}
+
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[letterpaper]{article}
+\input{sheet_preamble}
+
+\begin{document}
+
+\newcommand{\archetypeField}{%
+  \node[anchor=west, text=parkbrown] at (\leftcolwidth+1.25,\archetypetop+0.28) {%
+    {\headerfont\fontsize{16}{18}\selectfont THE NAVIGATOR}%
+  };%
+}
+
+\newcommand{\actionContent}{%
+  % PREP COLUMN: TRAILBLAZER
+  \node[anchor=north west, text width=2.3in, inner sep=0pt]
+    at (\colonestart+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont TRAILBLAZER}\\[4pt]
+    {\fontsize{9}{12}\selectfont Create 2 new trail connections during the prep phase.}%
+  };
+
+  % DEFENSE COLUMN: BUSHWHACK + EMERGENCY EXTRACTION
+  \node[anchor=north west, text width=2.2in, inner sep=0pt]
+    at (\colonemid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont BUSHWHACK}
+    {\fontsize{7}{9}\selectfont \textit{(safe)}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Off-trail movement is a safe action. Requires fewer than 2 injuries.}\\[8pt]
+    {\sectionfont\fontsize{9}{11}\selectfont EMERGENCY EXTRACTION}
+    {\fontsize{7}{9}\selectfont \textit{(costly)}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Take 1 harm to bring one ally off-trail with you.}%
+  };
+
+  % DESPERATION COLUMN: I KNOW A SHORTCUT
+  \node[anchor=north west, text width=2.1in, inner sep=0pt]
+    at (\coltwomid+0.12, \colheaderbottom+0.08) {%
+    \raggedright
+    {\sectionfont\fontsize{9}{11}\selectfont I KNOW A SHORTCUT}\\[4pt]
+    {\fontsize{8}{10}\selectfont \textit{Spend 1 token:}}\\[3pt]
+    {\fontsize{9}{12}\selectfont Move to any location on the map, even occupied ones.}%
+  };%
+}
+
+\input{sheet_body}
+
+\end{document}
