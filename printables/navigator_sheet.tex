@@ -39,7 +39,9 @@
   FakeBold = 1.5
 ]
 
-\newfontfamily\promptfont{Caveat}
+\newfontfamily\promptfont{Caveat}[
+  Renderer=HarfBuzz
+]
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
@@ -290,12 +292,12 @@
   \node[anchor=north west, text=mutedtext, inner sep=0pt]
     at (\leftcolwidth+0.15,\charactertop+0.74) {%
     \begin{minipage}{2.3in}
-    \raggedright\promptfont\fontsize{9}{12}\selectfont
-    \par\hangindent=1em\hangafter=1\noindent$\circ$ What were you running from when you came to the park?\par\vspace{4pt}
-    \par\hangindent=1em\hangafter=1\noindent$\circ$ Why did you leave the park and come back?\par\vspace{4pt}
-    \par\hangindent=1em\hangafter=1\noindent$\circ$ What do you keep in your personal locker at the ranger station?\par\vspace{4pt}
-    \par\hangindent=1em\hangafter=1\noindent$\circ$ When you close your eyes at night, what memory keeps coming back unbidden?\par\vspace{4pt}
-    \par\hangindent=1em\hangafter=1\noindent$\circ$ You have one thing from before the invasion you carry on your person, what is it?\par\vspace{4pt}
+    \raggedright\promptfont\fontsize{9}{11}\selectfont
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ What were you running from when you came to the park?\par\vspace{2pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ Why did you leave the park and come back?\par\vspace{2pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ What do you keep in your personal locker at the ranger station?\par\vspace{2pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ When you close your eyes at night, what memory keeps coming back unbidden?\par\vspace{2pt}
+    \par\hangindent=1em\hangafter=1\noindent$\circ$ You have one thing from before the invasion you carry on your person, what is it?\par\vspace{2pt}
     \par\hangindent=1em\hangafter=1\noindent$\circ$ In the aftermath of everything you lost touch with someone important. Who was it, and why can't you stop thinking about them?
     \end{minipage}%
   };
