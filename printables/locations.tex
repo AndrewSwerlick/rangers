@@ -15,31 +15,33 @@
 % TYPOGRAPHY
 % ============================================================================
 \setmainfont{EB Garamond}[
+  UprightFeatures = {RawFeature={axis={wght=600}}},
   BoldFont = {EB Garamond},
-  BoldFeatures = {RawFeature={wght=700}},
+  BoldFeatures = {RawFeature={axis={wght=800}}},
   ItalicFont = {EB Garamond Italic},
+  ItalicFeatures = {RawFeature={axis={wght=600}}},
   BoldItalicFont = {EB Garamond Italic},
-  BoldItalicFeatures = {RawFeature={wght=700}}
+  BoldItalicFeatures = {RawFeature={axis={wght=800}}}
 ]
 
 \setsansfont{Josefin Sans}[
+  UprightFeatures = {RawFeature={axis={wght=400}}},
   BoldFont = {Josefin Sans},
-  BoldFeatures = {RawFeature={wght=700}}
+  BoldFeatures = {RawFeature={axis={wght=700}}}
 ]
 
 \newfontfamily\headerfont{Josefin Sans}[
-  RawFeature = {wght=700},
-  LetterSpace = 5,
-  FakeBold = 1.5
+  RawFeature = {axis={wght=700}},
+  LetterSpace = 5
 ]
 
 \newfontfamily\sectionfont{Josefin Sans}[
-  RawFeature = {wght=700},
-  FakeBold = 1.5
+  RawFeature = {axis={wght=700}}
 ]
 
 \newfontfamily\promptfont{Caveat}[
-  Renderer=HarfBuzz
+  Renderer=HarfBuzz,
+  RawFeature = {axis={wght=700}}
 ]
 
 \pagestyle{empty}

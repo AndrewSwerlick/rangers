@@ -93,13 +93,11 @@ Conditions emerge from the collaborative fiction. GM may keep exact triggers som
 
 **Mechanics:**
 - Simple prompt: "What are you doing to prepare for the threat?"
-- Players describe preparations narratively
-- GM assigns costs and benefits based on scope/investment
-- Group discusses and commits to purchases
+- Players describe preparations narratively, but also mechanically
+- Group discusses and commits to purchases, but individuals can make their own choices with their tokens
 - Any unspent tokens are saved for Act 3
 
 **Available Defenses:**
-Players don't see this as a menu - they describe what they want to do, GM references this chart:
 
 **Traps** (placed on road segments, one-time use)
 - 2 tokens: Standard trap (2 momentum damage, stops advancement)
@@ -117,9 +115,6 @@ Players don't see this as a menu - they describe what they want to do, GM refere
 - 6+ tokens: +2 bonus plus special ability (GM discretion)
 
 **GM Flexibility:**
-- Costs can be adjusted based on token budget and narrative scope
-- Creative ideas get GM adjudication using these as guidelines
-- "I'm carefully positioning spike traps to funnel them into a killzone" might justify lower cost
 - Players can invest MORE in specific defenses for greater impact
 
 **Strategic Choices:**

@@ -55,3 +55,23 @@ result-*
 # OS files
 .DS_Store
 Thumbs.db
+
+# AUCTeX per-directory parse cache
+auto/
+
+# LaTeX scratch build dirs (not a build system, just leftover aux files)
+build/
+
+# Map pipeline artifacts: default --out stem for both
+# scripts/build_reference.py and scripts/build_playmap.sh
+out/
+
+# osmnx Overpass API response cache (ox.settings.use_cache)
+cache/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Claude Code agent worktrees
+.claude/worktrees/

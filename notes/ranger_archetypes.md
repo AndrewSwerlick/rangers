@@ -13,7 +13,7 @@
 - Desperation special move: "Bullseye at 600 yards" - Spend 1 token, deal 3 momentum damage to any token that's within 2 segments of your location
 
 ## The Rigger 
-- Prep Bonus: Can place 1 free trap without spending tokens
+- Prep Bonus: Can place 1 free trap
 - Crisis Safe Bonus: Targeted Detonation - If a wave triggers a trap adjactent to your location, add + 1 damage
 - Crisis Costly Bonus: Controlled Burn - May start a fire to temporarily block advancement along a road for 2 turns, and deal 1 momentum damage each turn to nearby tokens. Take 1 harm
 - Desperation special move: "Scorched Earth" - Spend 2 tokens, permanently destroy a road segment and do 2 momentum damage for each adjacent token 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 set -euo pipefail
 
 # Only run in remote (Claude Code on the web) environments

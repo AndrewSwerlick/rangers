@@ -39,6 +39,18 @@
             ;
         };
 
+        # Python environment for the OSM -> traceable park-map pipeline
+        # (scripts/build_reference.py). Kept in its own devShell so it does
+        # not perturb the LaTeX/Pandoc book toolchain above.
+        pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+          osmnx        # OpenStreetMap download + street-network modelling
+          networkx     # graph topology (bridges, betweenness, ...)
+          geopandas    # geospatial dataframes
+          matplotlib   # PDF rendering
+          shapely      # geometry
+          rtree        # spatial index backing geopandas sjoin / sindex
+        ]);
+
       in
       {
         devShells.default = pkgs.mkShell {
@@ -105,6 +117,46 @@ EOF
             echo "  - pandoc <file>.tex -o <file>.epub # Convert to ePub"
             echo ""
             echo "Fonts available: Josefin Sans, EB Garamond, Caveat (Google Fonts variable fonts)"
+            echo ""
+          '';
+        };
+
+        # Separate shell for the geospatial map pipeline:
+        #   nix develop .#python
+        #   python scripts/build_reference.py --out out/hard_labor_creek
+        devShells.python = pkgs.mkShell {
+          buildInputs = [ pythonEnv pkgs.git ];
+          shellHook = ''
+            echo "🗺  Park-map reference environment (osmnx pipeline)"
+            echo "=================================================="
+            echo "Python: $(python --version)"
+            python -c "import osmnx; print('OSMnx:', osmnx.__version__)"
+            echo ""
+            echo "Run: python scripts/build_reference.py --out out/hard_labor_creek"
+            echo ""
+          '';
+        };
+
+        # Image-only shell for the hand-traced-sketch -> wall-map pipeline
+        # (scripts/build_playmap.sh). Deliberately excludes the LaTeX
+        # toolchain so it loads fast when you are just iterating on a map.
+        devShells.map = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            imagemagick   # clean-up, enlargement, tiling
+            ghostscript   # PDF assembly
+            potrace       # bitmap -> vector, so enlargement stays crisp
+            dejavu_fonts  # sheet labels on the tiled output
+            coreutils
+            gnumake
+          ];
+          shellHook = ''
+            export PLAYMAP_FONT="${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSans.ttf"
+            echo "🗺  Play-map post-processing environment"
+            echo "======================================="
+            echo "ImageMagick: $(magick -version | head -n1 | cut -d' ' -f1-3)"
+            echo "potrace:     $(potrace --version | head -n1)"
+            echo ""
+            echo "Run: ./scripts/build_playmap.sh map-images/hard-labor-sketch.jpg"
             echo ""
           '';
         };
